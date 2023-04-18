@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import Listing from "./Components/List.comp.js";
+import MockData from "./data.json";
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const [data, setData] = useState(MockData);
+
+  const listing = data.map((list, index) => {
+    return <Listing list={list} />;
+  });
+
+   return <div className= "App">{listing}</div>;
+   
 }
 
 export default App;
